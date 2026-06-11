@@ -9,7 +9,7 @@ public class LobbyScene : BaseScene
         base.Init();
 
         Managers.UI.m_lobby = Managers.UI.ShowPopupUI<UI_Lobby>();
-        Managers.Network.CoonectServer(success =>
+        Managers.Network.ConnectServer(success =>
         {
             if (Managers.UI.m_isNewAccount)
             {
