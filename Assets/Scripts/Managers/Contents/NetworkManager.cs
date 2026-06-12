@@ -16,34 +16,34 @@ public class NetworkManager : MonoBehaviour
     IPAddress _ipAddr;
     IPEndPoint _ipEndPoint;
 
+    private Action<Session> _onConnected;
+    private bool _connected;
+
     public void Init(int port)
     {
-        string host = Dns.GetHostName();
-        IPHostEntry ipHost = Dns.GetHostEntry(host);
-        for (int i = 0; ipHost.AddressList.Length > i; i++)
-        {
-            if (ipHost.AddressList[i].AddressFamily == AddressFamily.InterNetwork)
-            {
-                _ipAddr = ipHost.AddressList[i];
-                break;
-            }
-        }
-
+        _ipAddr = IPAddress.Parse("127.0.0.1");
         _ipEndPoint = new IPEndPoint(_ipAddr, port);
     }
 
     public void ConnectServer(Action<Session> success)
     {
+        _onConnected = success;
         _connector.Connect(_ipEndPoint,
             () =>
             {
-                success?.Invoke(_session);
+                _connected = true;
                 return _session;
             });
     }
 
     public void Update()
     {
+        if (_connected)
+        {
+            _connected = false;
+            _onConnected?.Invoke(_session);
+        }
+
         List<PacketMessage> list = PacketQueue.Instance.PopAll();
         foreach (PacketMessage packet in list)
         {
