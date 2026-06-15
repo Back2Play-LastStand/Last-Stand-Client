@@ -1190,7 +1190,7 @@ Transform:
   m_GameObject: {fileID: 5353890366430669099}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1273,7 +1273,7 @@ CapsuleCollider:
   m_Radius: 0.31291366
   m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0.02}
+  m_Center: {x: 0, y: 0, z: 0.02}
 --- !u!114 &4816016654023457740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,9 +1344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdc644bd74b64178acaeba550559104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 0}
-  m_firingPos: {fileID: 0}
-  m_delay: 0
+  m_bulletPrefab: {fileID: 6975525050668928423, guid: 67d72d8b0857743cf8a88428d9fea5c0, type: 3}
+  m_firingPos: {fileID: 7934667575240021668}
+  m_delay: 0.2
   m_maxAmmo: 90
   m_gunAmmo: 30
   m_curAmmo: 0
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31fe1063cff24230b50a54b0e9151f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  m_speed: 0
+  m_speed: 5
 --- !u!114 &958837063034802523
 MonoBehaviour:
   m_ObjectHideFlags: 0

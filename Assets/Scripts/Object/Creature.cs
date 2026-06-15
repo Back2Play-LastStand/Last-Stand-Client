@@ -22,7 +22,8 @@ public class Creature : HealthComponent, IDamage
                 return;
 
             _positionInfo = value;
-            _destPos = new Vector3(value.PosX, transform.position.y, value.PosY);
+            const float TILE_SIZE = 0.1f;
+            _destPos = new Vector3(value.PosX * TILE_SIZE, transform.position.y, value.PosY * TILE_SIZE);
             transform.position = _destPos;
         }
     }
