@@ -11,6 +11,8 @@ public class Creature : HealthComponent, IDamage
     public uint _damage = 10;
     [field: SerializeField]
     public ulong Id { get; set; }
+    
+    const float TILE_SIZE = 0.1f;
 
     PositionInfo _positionInfo = new PositionInfo();
     public PositionInfo PosInfo
@@ -22,10 +24,21 @@ public class Creature : HealthComponent, IDamage
                 return;
 
             _positionInfo = value;
-            const float TILE_SIZE = 0.1f;
             _destPos = new Vector3(value.PosX * TILE_SIZE, transform.position.y, value.PosY * TILE_SIZE);
             transform.position = _destPos;
         }
+    }
+    public void TeleportTo(PositionInfo posInfo, float y)
+    {
+        _positionInfo = posInfo;
+
+        _destPos = new Vector3(
+            posInfo.PosX * TILE_SIZE,
+            y,
+            posInfo.PosY * TILE_SIZE
+        );
+
+        transform.position = _destPos;
     }
 
     public Vector3 VectorPos
@@ -72,6 +85,5 @@ public class Creature : HealthComponent, IDamage
     {
         Debug.Log($"{name} is dead");
         Managers.Object.Remove(Id);
-        Destroy(gameObject);
     }
 }

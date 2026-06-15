@@ -6,11 +6,15 @@ using UnityEngine;
 public class MyPlayer : Player
 {
     protected PlayerInput m_playerInput;
+    Collider m_collider;
+    public bool IsDead => m_isDead;
+    bool m_isDead = false;
 
     protected override void Init()
     {
         base.Init();
         m_playerInput = GetComponent<PlayerInput>();
+        m_collider = GetComponent<Collider>();
 
         // UI
         if (Managers.UI.m_Interface == null)
@@ -22,6 +26,8 @@ public class MyPlayer : Player
 
     protected override void Update()
     {
+        if (m_isDead) return;
+
         base.Update();
 
         UpdateAnim();
@@ -104,9 +110,49 @@ public class MyPlayer : Player
 
     public override void Die()
     {
-        base.Die();
+        Debug.Log($"{name} is dead");
+
+        m_isDead = true;
+        SetInput(false);
+        SetCollider(false);
+        SetVisible(false);
 
         Managers.UI.ShowPopupUI<UI_Respawn>();
+    }
+
+    public void Respawn(ObjectInfo info)
+    {
+        m_isDead = false;
+
+        SetHealth(info.Health);
+        PosInfo = info.PosInfo;
+        TeleportTo(PosInfo, 4.0f);
+        UpdateHealthBar(this);
+
+        SetVisible(true);
+        SetInput(true);
+        SetCollider(true);
+
+        Managers.UI.CloseAllPopupUI();
+        Managers.UI.m_Interface.SetTarget();
+    }
+
+    public void SetInput(bool active)
+    {
+        if (m_playerInput != null)
+            m_playerInput.enabled = active;
+    }
+
+    public void SetCollider(bool active)
+    {
+        if (m_collider != null)
+            m_collider.enabled = active;
+    }
+    public void SetVisible(bool active)
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>(true);
+        foreach (Renderer renderer in renderers)
+            renderer.enabled = active;
     }
 
     void OnApplicationQuit()
