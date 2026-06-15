@@ -10,6 +10,9 @@ public class GameScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Game;
+
+        if (GameObject.Find("FollowPlayerCamera") == null)
+            Managers.Resource.Instantiate("FollowPlayerCamera");
     }
 
     public override void Clear()

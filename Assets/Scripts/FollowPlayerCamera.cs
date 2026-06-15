@@ -6,18 +6,28 @@ using UnityEngine;
 public class FollowPlayerCamera : MonoBehaviour
 {
     public CinemachineCamera virtualCamera;
-    public Vector3 offset = new Vector3(0, 10, 0);
 
-    void Start()
+    Transform _target;
+
+    void Awake()
     {
         if (virtualCamera == null)
             virtualCamera = GetComponent<CinemachineCamera>();
+    }
 
-        GameObject player = Managers.Object.MyPlayer.gameObject;
+    void LateUpdate()
+    {
+        if (Managers.Object.MyPlayer == null)
+            return;
 
-        if (player != null)
-        {
-            virtualCamera.Follow = player.transform;
-        }
+        Transform player = Managers.Object.MyPlayer.transform;
+
+        if (_target == player)
+            return;
+
+        _target = player;
+
+        virtualCamera.Follow = _target;
+        virtualCamera.LookAt = _target;
     }
 }

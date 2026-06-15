@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5846264446204193381}
   - component: {fileID: 7713305844287086637}
+  - component: {fileID: 5782484552381592242}
   - component: {fileID: 1931527601258774269}
   m_Layer: 0
   m_Name: FollowPlayerCamera
@@ -51,7 +52,7 @@ MonoBehaviour:
     m_Value: 7
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 0
+  m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 0}
@@ -77,6 +78,25 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &5782484552381592242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7832187139826350052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 1, y: 1, z: 1}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 10, z: -3}
 --- !u!114 &1931527601258774269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 7713305844287086637}
-  offset: {x: 0, y: 10, z: 0}
 --- !u!1 &8869970060907108290
 GameObject:
   m_ObjectHideFlags: 0
