@@ -1,8 +1,15 @@
 fileFormatVersion: 2
-guid: 17e3ac48de7734f3a84c6b8873d77ae3
+guid: ffcd02750402e264babfe88a9b5f9422
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 0
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 277409
+  packageName: 3D Characters Zombie City Streets Lowpoly Pack - Lite
+  packageVersion: 1.01
+  assetPath: Assets/3D Characters Zombie City Streets Lowpoly Pack - Lite/Materials/Eyes.mat
+  uploadId: 707786
