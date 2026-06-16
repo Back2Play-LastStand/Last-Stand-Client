@@ -49,7 +49,7 @@ public class EnemyAI : Monster
 
     void Update()
     {
-        rootNode.Evaluate();
+        //rootNode.Evaluate();
     }
 
     INode.STATE Attack()
