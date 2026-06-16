@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b5d033132b44fa982f48ea424c8e2c, type: 3}
   m_Name: ServerConnection
   m_EditorClassIdentifier: 
-  BaseUrl: http://127.0.0.1:5038/api
+  BaseUrl: http://127.0.0.1:5075/api
   RegisterEndpoint: /auth/register
   LoginEndpoint: /auth/login
   VerifyCodeEndpoint: /verify/send

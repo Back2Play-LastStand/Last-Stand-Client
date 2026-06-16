@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 [CreateAssetMenu(fileName = "ServerConnection", menuName = "Configs/ServerConnection")]
 public class ServerConnection : ScriptableObject
 {
-    public string BaseUrl = "http://127.0.0.1:5038/api";
+    public string BaseUrl = "http://127.0.0.1:5075/api";
 
     public string RegisterEndpoint = "/auth/register";
     public string LoginEndpoint = "/auth/login";
